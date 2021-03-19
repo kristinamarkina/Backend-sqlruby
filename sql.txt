@@ -4,8 +4,14 @@ Join the OrderDetails and Products tables, to show a report where the columns ar
 Paste the SQL statement you used below.
 
 
+SELECT od.OrderID AS "Order ID", p.ProductName AS "Product Name", od.Quantity
+FROM OrderDetails od INNER JOIN Products p ON od.ProductID = p.ProductID ORDER BY od.OrderID;
 Join the Orders, OrderDetails, and Employees tables to return a report with with the EmployeeName, ProductID, and Quantity.
 Paste the SQL statement you used below.  Hint: EmployeeName is not a column in the Employee table, but you can generate a
 report with EmployeeName by starting your SQL this way: SELECT (Employees.FirstName || " " || Employees.LastName) AS EmployeeName,
 
 
+SELECT (e.FirstName + ' ' + e.LastName) AS EmployeeName, od.ProductID, od.Quantity
+FROM Employees e, Orders o, OrderDetails od
+WHERE e.EmployeeID = o.EmployeeID AND o.OrderID = od.OrderID
+ORDER BY 1;
