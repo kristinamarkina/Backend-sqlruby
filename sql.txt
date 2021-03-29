@@ -11,7 +11,6 @@ Paste the SQL statement you used below.  Hint: EmployeeName is not a column in t
 report with EmployeeName by starting your SQL this way: SELECT (Employees.FirstName || " " || Employees.LastName) AS EmployeeName,
 
 
-SELECT (e.FirstName + ' ' + e.LastName) AS EmployeeName, od.ProductID, od.Quantity
-FROM Employees e, Orders o, OrderDetails od
-WHERE e.EmployeeID = o.EmployeeID AND o.OrderID = od.OrderID
-ORDER BY 1;
+SELECT (e.FirstName || ' ' || e.LastName) AS EmployeeName, od.ProductID, od.Quantity
+FROM Employees e INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
+INNER JOIN OrderDetails od ON o.OrderID = od.OrderID
